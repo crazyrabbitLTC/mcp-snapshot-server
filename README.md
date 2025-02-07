@@ -1,6 +1,6 @@
 # MCP Snapshot Server
 
-A Model Context Protocol server for interacting with Snapshot.org. This server provides MCP-compliant tools, resources, and prompts for querying Snapshot spaces, proposals, and users.
+A Model Context Protocol server for interacting with Snapshot.org. This server provides MCP-compliant tools for querying Snapshot spaces, proposals, and users.
 
 ## Installation
 
@@ -10,75 +10,48 @@ npm install mcp-snapshot-server
 
 ## Usage with Claude Desktop
 
-1. Install the server globally:
-```bash
-npm install -g mcp-snapshot-server
+In your Claude Desktop config file (located at `~/Library/Application Support/Claude/claude_desktop_config.json` on Mac or `%APPDATA%\Claude\claude_desktop_config.json` on Windows):
+
+```json
+{
+    "mcpServers": {
+        "snapshot": {
+            "command": "node",
+            "args": [
+                "/ABSOLUTE/PATH/TO/snapshot-server/build/index.js"
+            ]
+        }
+    }
+}
 ```
 
-2. Start the server:
-```bash
-snapshot-mcp-server
-```
+## Available Tools
 
-3. In Claude Desktop settings:
-   - Go to Settings > Model Context Protocol
-   - Add a new server with:
-     - Name: "Snapshot"
-     - Command: "snapshot-mcp-server"
-     - Working Directory: (leave blank)
-
-4. The server will now be available in your Claude conversations
-
-## Available Functionality
-
-### Tools
-
-#### getSpaces
+### getSpaces
 Get a list of Snapshot spaces
 - `limit`: Number of spaces to fetch (optional)
 - `skip`: Number of spaces to skip (optional)
 
-#### getRankedSpaces
+### getRankedSpaces
 Get a ranked list of Snapshot spaces with detailed information
 - `first`: Number of spaces to fetch (default: 18)
 - `skip`: Number of spaces to skip (default: 0)
 - `category`: Category to filter by (default: 'all')
 - `search`: Search term to filter spaces (optional)
 
-#### getProposals
+### getProposals
 Get proposals for a specific space
 - `spaceId`: ID of the space
 - `state`: Filter by proposal state (active, closed, pending, all)
 - `limit`: Number of proposals to fetch
 
-#### getProposal
+### getProposal
 Get details of a specific proposal
 - `proposalId`: ID of the proposal
 
-#### getUser
+### getUser
 Get information about a Snapshot user
 - `address`: Ethereum address of the user
-
-### Resources
-
-Available at these URIs:
-- `snapshot://spaces` - List of all Snapshot spaces
-- `snapshot://proposals/{spaceId}` - Proposals for a specific space
-- `snapshot://users/{address}` - Information about a specific user
-
-### Prompts
-
-#### summarizeProposal
-Generates a prompt to summarize a Snapshot proposal
-- Required argument: `proposalId`
-
-#### listActiveProposals
-Generates a prompt to list active proposals for a space
-- Required argument: `spaceName`
-
-#### generateTweet
-Generates a prompt for a tweet about voting on a proposal
-- Required argument: `proposalName`
 
 ## Development
 
@@ -95,11 +68,6 @@ npm install
 3. Build the project:
 ```bash
 npm run build
-```
-
-4. Start the server:
-```bash
-npm start
 ```
 
 ## License
