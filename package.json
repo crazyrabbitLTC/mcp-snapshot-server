@@ -1,5 +1,5 @@
 {
-  "name": "mcp-boilerplate",
+  "name": "mcp-snapshot-server",
   "version": "1.0.1",
   "description": "A Model Context Protocol server boilerplate",
   "type": "module",
@@ -16,6 +16,9 @@
     "typescript"
   ],
   "author": "Dennison Bertram",
+  "repository": "https://github.com/dennisonbertram/mcp-snapshot-server",
+  "homepage": "https://github.com/dennisonbertram/mcp-snapshot-server",
+  "contact": "dennison@tally.xyz",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0",
