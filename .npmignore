@@ -1,0 +1,7 @@
+src/
+tsconfig.json
+.gitignore
+MCP-docs.txt
+MCP-Typescript-readme.txt
+repomix-output.txt
+snapshot.pdf 
